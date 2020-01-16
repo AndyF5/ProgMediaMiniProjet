@@ -10,12 +10,15 @@ class App extends React.Component {
     return (
       <Router>
         <Navigation />
+
         <Route exact path="/">
           <Accueil />
         </Route>
+
         <Route exact path="/vendeur">
           <Vendeur />
         </Route>
+
         <Route exact path="/client">
           <Client></Client>
         </Route>
