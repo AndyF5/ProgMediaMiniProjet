@@ -1,4 +1,25 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+
+import Navigation from "./components/Navigation";
+import Client from "./components/Client";
+
+class App extends React.Component {
+  render () {
+    return (
+      <Navigation />
+
+      <Router>
+        <Route exact path="/vendeur">
+          <Vendeur />
+        </Route>
+        <Route exact path="/client">
+          <Client></Client>
+        </Route>
+      </Router>
+    )
+  }
+}
 
 export default () => (
   <>
