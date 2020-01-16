@@ -7,9 +7,9 @@ import Client from "./components/Client";
 class App extends React.Component {
   render () {
     return (
-      <Navigation />
-
       <Router>
+        <Navigation />
+
         <Route exact path="/vendeur">
           <Vendeur />
         </Route>
@@ -17,7 +17,7 @@ class App extends React.Component {
           <Client></Client>
         </Route>
       </Router>
-    )
+    );
   }
 }
 
