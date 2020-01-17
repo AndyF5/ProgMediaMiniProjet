@@ -33,7 +33,7 @@ class ListArticlesVendeur extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  articles: state.venderuReducer.articles
+  articles: state.vendeurReducer.articles
 });
 
 export default connect(mapStateToProps, { getArticles })(ListArticlesVendeur);
