@@ -1,8 +1,12 @@
 import React from "react";
+import { Navbar } from "react-bootstrap";
+
 
 class Navigation extends React.Component {
     render() {
-        <h1>Navigation</h1>
+        <Navbar>
+
+        </Navbar>
     }
 }
 
