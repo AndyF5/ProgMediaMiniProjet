@@ -1,11 +1,37 @@
 import React from "react";
 
+import { removeArticle, selectArticle } from "../actions/vendeurActions";
+import { connect } from "react-redux";
+import { Button } from "react-bootstrap";
+
+import { FiDelete, FiEdit } from "react-icons/fi"; 
+import { Link } from "react-router-dom";
+
 class Article extends React.Component {
     render() {
         return (
-            <h1>Article</h1>
+            <tr>
+                <td className="w-50 align-middle">
+                    {this.props.article.title}
+                </td>
+                <td align="right" className="w-25 align-middle">
+                    ${this.props.article.prixUnitaire.toFixed(2)}
+                </td>
+                <td className="d-flex justify-content-around">
+                    <Button variant="outline-danger" onClick={() => this.props.removeArticle(this.props.article.id)}>
+                        <FiDelete />
+                    </Button>
+                    <Link className="btn btn-outline-primary" to={`/vendeur/modifier/${this.props.article.id}`}>
+                        <FiEdit />
+                    </Link>
+                </td>
+            </tr>
         );
     }
 }
 
-export default Article;
+const mapStateToProps = state => ({
+    articles: state.vendeurReducer.articles
+})
+
+export default connect(mapStateToProps, { removeArticle, selectArticle })(Article);

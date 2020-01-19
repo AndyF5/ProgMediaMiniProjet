@@ -1,6 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
+import "./css/app.css";
 
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -21,16 +22,13 @@ class App extends React.Component {
 
           <div className="d-flex w-100 justify-content-center align-items-center pt-4">
             <Switch>
-              <Route exact path="/">
-                <Accueil />
+              <Route exact path="/" component={Accueil}>
               </Route>
 
-              <Route exact path="/vendeur">
-                <Vendeur />
+              <Route path="/vendeur" component={Vendeur}>
               </Route>
 
-              <Route exact path="/client">
-                <Client></Client>
+              <Route path="/client" component={Client}>
               </Route>
             </Switch>
           </div>

@@ -9,12 +9,12 @@ import { getArticles } from "../../actions/vendeurActions";
 
 class ListArticlesVendeur extends React.Component {
   componentDidMount(){
-    this.props.getTasks();
+    this.props.getArticles();
   }
 
   render() {
     return (
-      <Table striped>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <th>Title</th>

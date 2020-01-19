@@ -1,8 +1,10 @@
 import { GET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, MODIFY_ARTICLE } from "../actions/types";
 
-import articles from "../data/articles.json";
+import articlesJSON from "../data/articles.json";
 
 import uuid from "uuid";
+
+let articles = articlesJSON.articles;
 
 const initialState = {
   articles: articles
@@ -24,7 +26,7 @@ export default function(state = initialState, action) {
       return {
         articles: state.articles.map(article => {
           if(article.id == action.id) {
-            article.title = action.id;
+            article.title = action.title,
             article.prixUnitaire = action.prixUnitaire
           }
           return articles;
