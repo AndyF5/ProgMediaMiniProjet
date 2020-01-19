@@ -1,7 +1,19 @@
 import React from "react";
-import { Card, Table } from "react-bootstrap";
+import { Card, Table, Nav, Tab, Row, Col, NavItem, Badge } from "react-bootstrap";
+import { BrowserRouter as Router, Route, Link, Switch, NavLink, Redirect } from "react-router-dom";
+
+import { getPanier } from "../actions/clientActions";
+import { connect } from "react-redux";
+
+import ListArticlesDisponible from "./client-interfaces/ListArticlesDisponibles";
+import SoldeClient from "./client-interfaces/SoldeClient";
+import PanierClient from "./client-interfaces/PanierClient";
 
 class Client extends React.Component {
+  componentDidMount(){
+    this.props.getPanier();
+  }
+
   render() {
     return (
       <Card>
@@ -13,49 +25,35 @@ class Client extends React.Component {
             <Row>
                 <Col sm={3}>
                   <Nav variant="pills" className="flex-column">
-                    <Nav.Link as={NavLink} to="/vendeur/articles">Articles</Nav.Link>
-                    <Nav.Link as={NavLink} to="/vendeur/ajouter">Ajouter</Nav.Link>
+                    <Nav.Link as={NavLink} to="/client/articles">Articles</Nav.Link>
+                    <Nav.Link as={NavLink} to="/client/solde">Solde</Nav.Link>
+                    <Nav.Link as={NavLink} to="/client/panier">
+                      Panier &nbsp;
+                      <Badge variant="secondary">
+                        {this.props.panier.length}
+                      </Badge>
+                    </Nav.Link>
                   </Nav>
                 </Col>
                 <Col sm={9}>
                   <Tab.Content>
-                    <Route exact path="/vendeur/articles">
-                      <ListArticlesVendeur />
-                    </Route>
-                    <Route exact path="/vendeur/ajouter">
-                      <AddArticleVendeur />
-                    </Route>
+                    <Route path="/client/articles" component={ListArticlesDisponible} />
+                    <Route path="/client/solde" component={SoldeClient} />
+                    <Route path="/client/panier" component={PanierClient} />
+                    <Redirect exact from="/client" to="/client/articles" />
                   </Tab.Content>
                 </Col>
             </Row>
           </Tab.Container>
-        </Card.Body>
-        <Card.Body>
-          <Table striped>
-            <thead>
-              <tr>
-                <th>Titre</th>
-                <th>Prix unitaire</th>
-                <th>Quantité</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-          </Table>
-
-          <hr />
-
-          <Table>
-            <tbody>
-                
-            </tbody>
-          </Table>
         </Card.Body>
       </Card>
     );
   }
 }
 
-export default Client;
+const mapStateToProps = state => ({
+  panier: state.clientReducer.panier
+});
+
+
+export default connect(mapStateToProps, { getPanier })(Client);

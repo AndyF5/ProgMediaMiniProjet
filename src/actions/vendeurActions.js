@@ -1,4 +1,4 @@
-import { GET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, MODIFY_ARTICLE, SELECT_ARTICLE } from "./types";
+import { GET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, MODIFY_ARTICLE } from "./types";
 
 
 export const getArticles = () => ({
