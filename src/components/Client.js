@@ -16,7 +16,7 @@ class Client extends React.Component {
 
   render() {
     return (
-      <Card>
+      <Card id="cardClient">
         <Card.Header as="h5">
           Articles disponibles
         </Card.Header>
