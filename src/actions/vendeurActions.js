@@ -1,4 +1,4 @@
-import { GET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, MODIFY_ARTICLE } from "./types";
+import { GET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, MODIFY_ARTICLE, CREATE_FACTURE, GET_SOLDEVENDEUR } from "./types";
 
 
 export const getArticles = () => ({
@@ -22,3 +22,12 @@ export const modifyArticle = (id, title, prixUnitaire) => ({
     title,
     prixUnitaire
 });
+
+export const createFacture = (panier) => ({
+    type: CREATE_FACTURE,
+    panier
+});
+
+export const getSoldeVendeur = () => ({
+    type: GET_SOLDEVENDEUR
+})

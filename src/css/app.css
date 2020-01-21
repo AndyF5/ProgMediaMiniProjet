@@ -1,4 +1,4 @@
 #cardVendeur, #cardClient{
     width: 50rem;
-    max-height: 25rem;
+    min-height: 25rem;
 }

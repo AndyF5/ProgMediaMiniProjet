@@ -17,7 +17,8 @@ class PanierClient extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      total: 0
+      total: 0,
+      facture: false
     }
   }
 
@@ -26,7 +27,7 @@ class PanierClient extends React.Component {
     this.props.getArticles();
     var newTotal = 0;
     this.props.panier.map((item) => 
-      newTotal += item.quantite * this.props.articles.find((element) => {return element.id == item.articleID}).prixUnitaire
+      newTotal += item.quantite * this.props.articles.find((element) => {return element.id == item.articleID}).prixUnitaire * 1.12
     );
 
     this.setState({
@@ -35,14 +36,16 @@ class PanierClient extends React.Component {
   }
 
   handleClick = (e) => {
-    this.props.createFacture(this.props.panier);
-    this.props.history.push(`client/panier/facture`);
+    //this.props.createFacture(this.props.panier);
+    this.setState({
+      facture: true
+    })
   }
 
   render() {
     return(
       <div>
-        <Router>
+        <div>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -65,15 +68,19 @@ class PanierClient extends React.Component {
                 <th>Total avant taxes:</th>
                 <td align="right">${this.state.total.toFixed(2)}</td>
               </tr>
+              <tr>
+                <td></td>
+                <td>
+                  <Button variant="outline-success" className="float-right" onClick={this.handleClick}>
+                    Passer la commande <MdShoppingCart /> <MdKeyboardArrowRight />
+                  </Button>
+                </td>
+              </tr>
             </tbody>
           </Table>
-          <Button variant="outline-success" className="float-right" onClick={this.handleClick}>
-            Passer la commande <MdShoppingCart /> <MdKeyboardArrowRight />
-          </Button>
-          <Route path="/client/panier/facture">
-            <Facture panier={this.props.panier} />
-          </Route>
-        </Router>
+          
+        </div>
+        {this.state.facture ? <Facture panier={this.props.panier} facture={this.props.facture} /> : null}
       </div>
     )
   }

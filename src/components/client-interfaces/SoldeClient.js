@@ -1,14 +1,17 @@
 import React from "react";
 
-import { Table, Row, Col, Form, Button } from "react-bootstrap";
+import { Table, Row, Col, Form, Button, Badge, Alert } from "react-bootstrap";
 
 import { getSolde, addToSolde } from "../../actions/clientActions";
 import { connect } from "react-redux";
 import { MdAdd } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
 
 class SoldeClient extends React.Component {
   state = {
-    montantToAdd: 0
+    montantToAdd: 0,
+    show: false,
+    added: 0
   }
 
   componentDidMount() {
@@ -21,6 +24,15 @@ class SoldeClient extends React.Component {
     })
   }
 
+  handleSubmit = (e) => {
+    this.props.addToSolde(1, this.state.montantToAdd);
+    this.setState({
+      show: true,
+      added: this.state.montantToAdd,
+      montantToAdd: 0
+    })
+  }
+
   render() {
     return(
       <div>
@@ -28,29 +40,35 @@ class SoldeClient extends React.Component {
           <Col md="3">
             <dl>
               <dt>Solde:</dt>
-              <dd className="ml-3">
-                {console.log(this.props.soldes.find(solde => solde.id == 1))}
+              <dd className="">
+              <h3 className="mt-1"><Badge variant="success">${(this.props.soldes.find(solde => solde.id == 1).montant).toFixed(2)}</Badge></h3>
               </dd>
             </dl>
           </Col>
-          <Col md="9">
-            <Form.Group as={Row}>
-              <Form.Label column sm="6">Ajouter à votre solde</Form.Label>
-              <Col sm="3" >
-                <Form.Control type="number" value={this.state.montantToAdd} onChange={this.handleChange}></Form.Control>
-              </Col>
-              <Col sm="3">
-                <Button variant="outline-success" onClick={(() => this.props.addToSolde(1, this.state.montantToAdd))}>
-                  <MdAdd />
-                </Button>
-              </Col>
-            </Form.Group>
-            
-          </Col>
-        </Row>
-        
-            
           
+        </Row>
+        <hr />
+        <Row>
+          <Col>
+            <Form>
+            <Form.Group>
+              <Form.Label>Ajouter à votre solde</Form.Label>
+              <Row>
+                <Col sm="4">
+                  <Form.Control type="number" value={this.state.montantToAdd} onChange={this.handleChange}></Form.Control>
+                </Col>
+                <Col sm="2" className="d-flex justify-content-center align-items-stretch">
+                  <Button variant="outline-success" onClick={this.handleSubmit}>
+                    <h6 className="m-0"><FaPlus /></h6>
+                  </Button>
+                </Col>
+                </Row>
+            </Form.Group>
+            </Form>
+            </Col>
+        </Row>
+            
+        {this.state.show ? <Alert variant="success" onClose={() => this.setState({show: false})} dismissible>${this.state.added} ajouté à votre solde!</Alert> : null}
       </div>
     );
   }
@@ -61,5 +79,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { getSolde, addToSolde })(SoldeClient);
-
-/*${(this.props.soldes.find(solde => solde.id == 1)).montant.toFixed(2)}*/

@@ -1,4 +1,4 @@
-import { GET_PANIER, ADD_TOPANIER, DELETE_FROMPANIER, ADD_TOSOLDE, SUBTRACT_FROMSOLDE, CREATE_FACTURE } from "./types";
+import { GET_PANIER, ADD_TOPANIER, DELETE_FROMPANIER, ADD_TOSOLDE, SUBTRACT_FROMSOLDE, CREATE_FACTURE, ARCHIVE_PANIER, GET_SOLDE, GET_ARCHIVEPANIER } from "./types";
 
 export const getPanier= () => ({
     type: GET_PANIER
@@ -16,7 +16,7 @@ export const deleteFromPanier = (id) => ({
 });
 
 export const getSolde = (id) => ({
-    type: GET_PANIER,
+    type: GET_SOLDE,
     id
 });
 
@@ -32,7 +32,11 @@ export const subtractFromSolde = (id, montant) => ({
     montant
 });
 
-export const createFacture = (panier) => ({
-    type: CREATE_FACTURE,
-    panier
+export const archivePanier = () => ({
+    type: ARCHIVE_PANIER
+});
+
+export const getArchiveCommandes = (montant) => ({
+    type: GET_ARCHIVEPANIER,
+    montant
 });

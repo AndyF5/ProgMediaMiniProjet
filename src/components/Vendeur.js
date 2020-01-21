@@ -12,13 +12,13 @@ class Vendeur extends React.Component {
     return (
       <Card id="cardVendeur">
         <Card.Header as="h5">
-          Gestion d'articles
+          Espace Vendeur
         </Card.Header>
         <Card.Body>
           <Tab.Container id="tabs-gestion">
             <Row>
                 <Col sm={3}>
-                  <Nav variant="pills" className="flex-column">
+                  <Nav variant="pills" className="flex-column mb-4">
                     <Nav.Link as={NavLink} to="/vendeur/articles">Articles</Nav.Link>
                     <Nav.Link as={NavLink} to="/vendeur/ajouter">Ajouter</Nav.Link>
                     <Nav.Link as={NavLink} to="/vendeur/modifier">Modifier</Nav.Link>

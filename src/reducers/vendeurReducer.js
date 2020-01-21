@@ -1,13 +1,19 @@
-import { GET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, MODIFY_ARTICLE } from "../actions/types";
+import { GET_ARTICLES, ADD_ARTICLE, REMOVE_ARTICLE, MODIFY_ARTICLE, CREATE_FACTURE, GET_SOLDEVENDEUR } from "../actions/types";
 
 import articlesJSON from "../data/articles.json";
+import soldeVendeurJSON from "../data/soldeVendeur.json";
+import facturesJSON from "../data/factures.json";
 
 import uuid from "uuid";
 
 let articles = articlesJSON.articles;
+let soldeVendeur = soldeVendeurJSON.soldeVendeur;
+let factures = facturesJSON.factures;
 
 const initialState = {
-  articles: articles
+  articles: articles,
+  soldeVendeur: soldeVendeur,
+  factures: factures
 };
 
 export default function(state = initialState, action) {
@@ -31,7 +37,14 @@ export default function(state = initialState, action) {
           }
           return articles;
         })
-      }
+      };
+    case CREATE_FACTURE:
+      return {
+        articles: articles,
+        factures: [...state.factures, {id: uuid.v4(), panier: action.panier, date: new Date()}]
+      };
+    case GET_SOLDEVENDEUR:
+      return state;
     default:
       return state;
   }
