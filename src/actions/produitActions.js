@@ -9,10 +9,11 @@ export const getProduits = () => ({
   type: GET_PRODUITS
 });
 
-export const modifyProduit = (title, prix) => ({
+export const modifyProduit = (id, title, prix) => ({
   type: MODIFY_PRODUIT,
   title,
-  prix
+  prix,
+  id
 });
 
 export const removeProduit = id => ({

@@ -28,31 +28,15 @@ export default function(state = initialState, action) {
     case GET_PRODUITS:
       return state;
     case MODIFY_PRODUIT:
-      /*return {
-        produits: [...state.produits.update(produit => produit.id = action.id)]
-      };*/
-      const modProduit = {
-        id: produit.id,
-        title: action.title,
-        prix: action.prix,
-        status: !produit.status
-      };
-
       return {
-        produits: [...state.produits, modProduit]
+        produits: state.produits.map(produit=>{
+          if(produit.id==action.id){
+            produit.title=action.title,
+            produit.prix=action.prix
+          }
+          return produit;
+        })
       };
-    /*case types.ARTICLE_EDIT:
-        return {
-            ...state,
-            articlesById: {
-                ...state.articlesById,
-                [action.article.id]: {
-                    ...state.articlesById[action.article.id],
-                    ...action.article
-                }
-            }
-        };*/
-
     case REMOVE_PRODUIT:
       return {
         produits: [...state.produits.filter(produit => produit.id != action.id)]
@@ -61,7 +45,7 @@ export default function(state = initialState, action) {
       const newProduit = {
         id: uuid.v4(),
         title: action.title,
-        prix:action.prix,
+        prix: action.prix,
         status: false
       };
 

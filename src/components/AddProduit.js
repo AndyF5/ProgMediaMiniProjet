@@ -11,9 +11,6 @@ class AddProduit extends React.Component {
     title: "",
     prix: ""
   };
-  state = {
-    
-  };
 
   onChangeTitle = e => {
     this.setState({
@@ -27,10 +24,9 @@ class AddProduit extends React.Component {
     });
   };
 
-  onClick = e => {
-    if (this.state.title && this.state.prix) {
-      this.props.addProduit(this.state.title, this.state.prix);
-    }
+  onClick = () => {
+    this.props.addProduit(this.state.title, this.state.prix);
+
     this.setState({ title: "", prix: "" });
   };
 
@@ -61,6 +57,7 @@ class AddProduit extends React.Component {
             <td>
               <Button
                 variant="primary"
+                type="submit"
                 className="float-right"
                 onClick={this.onClick}
               >

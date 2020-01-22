@@ -8,6 +8,26 @@ import { Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
 class Produit extends React.Component {
+
+  state = {
+    title: this.props.produit.title,
+    prix: this.props.produit.prix
+  }
+
+  onChangeTitle = e => {
+    this.setState({
+      title: e.target.value
+    });
+  };
+
+  onChangePrix = e => {
+    this.setState({
+      prix: e.target.value
+    });
+  };
+
+
+
   render() {
     return (
       <tr>
@@ -15,16 +35,16 @@ class Produit extends React.Component {
           <input
             type="text"
             className="form-control"
-            onChange={this.onChange}
-            value={this.props.produit.title}
+            value={this.state.title}
+            onChange={this.onChangeTitle}
           />
         </td>
         <td>
           <input
             type="number"
             className="form-control"
-            onChange={this.onChange}
-            value={this.props.produit.prix}
+            value={this.state.prix}
+            onChange={this.onChangePrix}
           />
         </td>
         <td>
@@ -32,8 +52,9 @@ class Produit extends React.Component {
             variant="success"
             onClick={() =>
               this.props.modifyProduit(
-                this.props.produit.title,
-                this.props.produit.prix
+                this.props.produit.id,
+                this.state.title,
+                this.state.prix
               )
             }
           >
