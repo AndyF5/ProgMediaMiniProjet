@@ -8,6 +8,7 @@ import AddArticleVendeur from "./vendeur-interfaces/AddArticleVendeur";
 import ModifyArticleVendeur from "./vendeur-interfaces/ModifyArticleVendeur";
 import Commandes from "./vendeur-interfaces/Commandes";
 
+//  Interface de vendeur.
 class Vendeur extends React.Component {
   render() {
     return (

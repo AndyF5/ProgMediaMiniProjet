@@ -13,6 +13,7 @@ import Client from "./components/Client";
 import Vendeur from "./components/Vendeur";
 import Accueil from "./components/Accueil";
 
+//  Composant racine
 class App extends React.Component {
   render () {
     return (

@@ -10,6 +10,7 @@ import SoldeClient from "./client-interfaces/SoldeClient";
 import PanierClient from "./client-interfaces/PanierClient";
 import CommandesClient from "./client-interfaces/CommandesClient";
 
+//  Interface pour client
 class Client extends React.Component {
   componentDidMount(){
     this.props.getPanier();
@@ -30,7 +31,7 @@ class Client extends React.Component {
                   <Nav.Link as={NavLink} to="/client/solde">Solde</Nav.Link>
                   <Nav.Link as={NavLink} to="/client/panier">
                     Panier &nbsp;
-                    <Badge variant="secondary">
+                    <Badge variant="secondary" className="m-auto">
                       {this.props.panier.reduce((prev, next) => prev + next.quantite, 0)}
                     </Badge>
                   </Nav.Link>

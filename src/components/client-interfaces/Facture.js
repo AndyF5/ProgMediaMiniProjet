@@ -125,7 +125,7 @@ class Facture extends React.Component {
                 <td className="border-top-0"></td>
                 <td className="border-top-0"></td>
                 <td colspan="2" className="px-0">
-                  <div className="d-flex justify-content-between">
+                  <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex flex-column">
                       <span >Votre solde:</span>
                       <h4 className="mt-1"><Badge variant="success">${(this.props.soldes.find(solde => solde.id == 1).montant).toFixed(2)}</Badge></h4>
