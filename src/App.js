@@ -19,20 +19,13 @@ class App extends React.Component {
       <Provider store={store}>
         <Router>
           <Navigation />
-
-          <div className="d-flex w-100 justify-content-center align-items-center pt-4">
+            <div className="d-flex w-100 justify-content-center align-items-center pt-4">
             <Switch>
-              <Route exact path="/" component={Accueil}>
-              </Route>
-
-              <Route path="/vendeur" component={Vendeur}>
-              </Route>
-
-              <Route path="/client" component={Client}>
-              </Route>
+              <Route exact path="/" component={Accueil}/>
+              <Route path="/vendeur" component={Vendeur}/>
+              <Route path="/client" component={Client}/>
             </Switch>
           </div>
-          
         </Router>
       </Provider>
     );

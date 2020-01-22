@@ -32,11 +32,12 @@ export const subtractFromSolde = (id, montant) => ({
     montant
 });
 
-export const archivePanier = () => ({
-    type: ARCHIVE_PANIER
+export const archivePanier = (panierArch, montant) => ({
+    type: ARCHIVE_PANIER,
+    panierArch,
+    montant
 });
 
-export const getArchiveCommandes = (montant) => ({
-    type: GET_ARCHIVEPANIER,
-    montant
+export const getArchiveCommandes = () => ({
+    type: GET_ARCHIVEPANIER
 });

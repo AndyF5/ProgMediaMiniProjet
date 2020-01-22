@@ -18,7 +18,7 @@ class ArticleClient extends React.Component {
   }
 
   handleChange = (e) => {
-    if (e.target.value > 0){
+    if (e.target.value >= 0 && e.target.value % 1 == 0 ){
       this.setState({
         quantite: e.target.value
       });
@@ -32,13 +32,13 @@ class ArticleClient extends React.Component {
           {this.props.article.title}
         </td>
         <td align="right" className="w-25 align-middle">
-          ${(this.props.article.prixUnitaire * 1.12).toFixed(2)}
+          ${(this.props.article.prixUnitaire).toFixed(2)}
         </td>
         <td className="align-middle">
-          <Form.Control type="number" min="0" value={this.state.quantite} onChange={this.handleChange}/>
+          <Form.Control type="number" min="0" step="1" value={this.state.quantite} onChange={this.handleChange}/>
         </td>
         <td className="align-middle">
-          <Button variant="outline-success" className="m-auto d-block" onClick={() => this.props.addToPanier(this.props.article.id, this.state.quantite)}>
+          <Button variant="outline-success" className="m-auto d-block" onClick={() => this.state.quantite > 0 ? this.props.addToPanier(this.props.article.id, this.state.quantite): null}>
             <FaCartPlus />
           </Button>
         </td>

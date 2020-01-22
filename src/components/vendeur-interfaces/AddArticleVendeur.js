@@ -34,7 +34,7 @@ class AddArticleVendeur extends React.Component {
           <Form.Control type="number" placeholder="Entrez le prix unitaire" value={this.state.prixUnitaire} onChange={this.handlePrixChange} />
         </Form.Group>
 
-        <Button variant="primary" type="submit" className="float-right" onClick={() => this.props.addArticle(this.state.title, parseFloat(this.state.prixUnitaire))}>
+        <Button variant="outline-primary" type="submit" className="float-right" onClick={() => this.props.addArticle(this.state.title, parseFloat(this.state.prixUnitaire))}>
           Ajouter
         </Button>
       </Form>

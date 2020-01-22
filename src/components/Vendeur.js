@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Link, Switch, NavLink, Redirect } from 
 import ListArticlesVendeur from "./vendeur-interfaces/ListArticlesVendeur";
 import AddArticleVendeur from "./vendeur-interfaces/AddArticleVendeur";
 import ModifyArticleVendeur from "./vendeur-interfaces/ModifyArticleVendeur";
+import Commandes from "./vendeur-interfaces/Commandes";
 
 class Vendeur extends React.Component {
   render() {
@@ -22,6 +23,7 @@ class Vendeur extends React.Component {
                     <Nav.Link as={NavLink} to="/vendeur/articles">Articles</Nav.Link>
                     <Nav.Link as={NavLink} to="/vendeur/ajouter">Ajouter</Nav.Link>
                     <Nav.Link as={NavLink} to="/vendeur/modifier">Modifier</Nav.Link>
+                    <Nav.Link as={NavLink} to="/vendeur/commandes">Commandes</Nav.Link>
                   </Nav>
                 </Col>
                 <Col sm={9}>
@@ -29,6 +31,7 @@ class Vendeur extends React.Component {
                     <Route exact path="/vendeur/articles" component={ListArticlesVendeur} />
                     <Route exact path="/vendeur/ajouter" component={AddArticleVendeur} />
                     <Route path="/vendeur/modifier/:articleID?" component={ModifyArticleVendeur} />
+                    <Route path="/vendeur/commandes" component={Commandes} />
                     <Redirect exact from="/vendeur" to="/vendeur/articles" /> 
                   </Tab.Content>
                 </Col>

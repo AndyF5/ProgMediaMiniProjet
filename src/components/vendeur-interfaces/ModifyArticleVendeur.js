@@ -68,7 +68,7 @@ class ModifyArticleVendeur extends React.Component {
             <Form.Control type="number" placeholder={this.state.prixUnitaire}  value={this.state.newPrix} onChange={(e) => this.handlePrixChange(e.target.value)} />
           </Form.Group>
 
-          <Button variant="primary" className="float-right" onClick={() => this.props.modifyArticle(this.state.id, this.state.newTitle, this.state.newPrix)}>
+          <Button variant="outline-primary" className="float-right" onClick={() => this.props.modifyArticle(this.state.id, this.state.newTitle, this.state.newPrix)}>
             Modifier
           </Button>
         </Form>

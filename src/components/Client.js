@@ -31,7 +31,7 @@ class Client extends React.Component {
                   <Nav.Link as={NavLink} to="/client/panier">
                     Panier &nbsp;
                     <Badge variant="secondary">
-                      {this.props.panier.length}
+                      {this.props.panier.reduce((prev, next) => prev + next.quantite, 0)}
                     </Badge>
                   </Nav.Link>
                   <Nav.Link as={NavLink} to="/client/commandes">

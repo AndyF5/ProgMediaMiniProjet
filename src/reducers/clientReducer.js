@@ -22,22 +22,19 @@ export default function(state = initialState, action) {
       return state;
     case ADD_TOPANIER:
       return {
-        soldes: soldes,
-        panierArchive: panierArchive,
+        ...state,
         panier: [...state.panier, {id: uuid.v4(), articleID: action.articleID, quantite: parseFloat(action.quantite)}]
       };
     case DELETE_FROMPANIER:
       return {
-        soldes: soldes,
-        panierArchive: panierArchive,
+        ...state,
         panier: [...state.panier.filter(item => item.id != action.id) ]
       };
     case GET_SOLDE:
       return state;
     case ADD_TOSOLDE:
       return {
-        panier: panier,
-        panierArchive: panierArchive,
+        ...state,
         soldes: state.soldes.map(solde => {
           if(solde.id == action.id) {
             solde.montant += parseFloat(action.montant)
@@ -47,16 +44,15 @@ export default function(state = initialState, action) {
       };
     case ARCHIVE_PANIER:
       return {
-        panierArchive: [...state.panierArchive, {id: uuid.v4(), panier: state.panier, date: new Date(), montant: action.montant}],
-        panier: [],
-        soldes: soldes
+        ...state,
+        panierArchive: [...state.panierArchive, {id: uuid.v4(), panier: action.panierArch, date: new Date(), montant: action.montant}],
+        panier: []
       }
     case GET_ARCHIVEPANIER:
       return state;
     case SUBTRACT_FROMSOLDE:
       return {
-        panier: panier,
-        panierArchive: panierArchive,
+        ...state,
         soldes: state.soldes.map(solde => {
           if(solde.id == action.id) {
             solde.montant -= parseFloat(action.montant)

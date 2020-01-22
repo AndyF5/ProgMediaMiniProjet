@@ -27,7 +27,7 @@ class PanierClient extends React.Component {
     this.props.getArticles();
     var newTotal = 0;
     this.props.panier.map((item) => 
-      newTotal += item.quantite * this.props.articles.find((element) => {return element.id == item.articleID}).prixUnitaire * 1.12
+      newTotal += item.quantite * this.props.articles.find((element) => {return element.id == item.articleID}).prixUnitaire
     );
 
     this.setState({
