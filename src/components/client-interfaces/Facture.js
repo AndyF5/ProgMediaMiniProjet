@@ -124,7 +124,7 @@ class Facture extends React.Component {
               <tr>
                 <td className="border-top-0"></td>
                 <td className="border-top-0"></td>
-                <td colspan="2" className="px-0">
+                <td colSpan="2" className="px-0">
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex flex-column">
                       <span >Votre solde:</span>
@@ -145,7 +145,7 @@ class Facture extends React.Component {
 
 const mapStateToProps = state => ({
   articles: state.vendeurReducer.articles,
-  soldes: state.clientReducer.soldes
+  soldes: state.clientSoldeReducer.soldes
 });
 
 export default connect(mapStateToProps, { getArticles, getSolde, subtractFromSolde, createFacture, archivePanier, addToSoldeVendeur })(Facture);

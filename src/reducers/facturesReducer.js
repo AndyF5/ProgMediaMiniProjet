@@ -1,11 +1,5 @@
 //  Types d'action.
 import { 
-  GET_PANIER,
-  ADD_TOPANIER,
-  DELETE_FROMPANIER,
-  GET_SOLDE,
-  ADD_TOSOLDE,
-  SUBTRACT_FROMSOLDE,
   ARCHIVE_PANIER,
   GET_ARCHIVEPANIER 
 } from "../actions/types";
@@ -13,7 +7,7 @@ import {
 import uuid from "uuid";
 
 const initialState = {
-  factures: []
+  panierArchive: []
 };
 
 export default function(state = initialState, action) {

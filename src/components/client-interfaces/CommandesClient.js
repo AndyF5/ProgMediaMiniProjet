@@ -62,7 +62,7 @@ class CommandesClient extends React.Component {
 }
 
 const mapStateToProps = state => ({
-	commandes: state.clientReducer.panierArchive
+	commandes: state.facturesReducer.panierArchive
 })
 
 export default connect(mapStateToProps, {getArchiveCommandes})(CommandesClient);

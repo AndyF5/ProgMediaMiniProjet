@@ -1,10 +1,13 @@
 import { combineReducers } from "redux";
 import vendeurReducer from "./vendeurReducer";
-import clientReducer from "./clientReducer";
 
 import panierReducer from "./panierReducer";
+import facturesReducer from "./facturesReducer";
+import clientSoldeReducer from "./clientSoldeReducer";
 
 export default combineReducers({
     vendeurReducer: vendeurReducer,
-    clientReducer: clientReducer
+    panierReducer: panierReducer,
+    facturesReducer: facturesReducer,
+    clientSoldeReducer: clientSoldeReducer
 });

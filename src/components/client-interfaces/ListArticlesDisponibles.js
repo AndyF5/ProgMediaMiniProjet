@@ -39,7 +39,7 @@ class ListArticlesDisponible extends React.Component {
 
 const mapStateToProps = state => ({
   articles: state.vendeurReducer.articles,
-  panier: state.clientReducer.panier
+  panier: state.panierReducer.panier
 });
 
 export default connect(mapStateToProps, { getArticles, getPanier })(ListArticlesDisponible);

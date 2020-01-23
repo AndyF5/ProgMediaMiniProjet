@@ -58,7 +58,7 @@ class Client extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  panier: state.clientReducer.panier
+  panier: state.panierReducer.panier
 });
 
 

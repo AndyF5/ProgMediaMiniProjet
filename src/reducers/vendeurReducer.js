@@ -57,8 +57,8 @@ export default function(state = initialState, action) {
       return state;
 
     case ADD_TOSOLDEVENDEUR:
-      soldeVendeur.montant += action.montant;
-      return;
+      soldeVendeur.montant += action.montant
+      return state;
 
     default:
       return state;

@@ -31,7 +31,7 @@ class LinePanier extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  panier: state.clientReducer.panier,
+  panier: state.panierReducer.panier,
   articles: state.vendeurReducer.articles
 });
 

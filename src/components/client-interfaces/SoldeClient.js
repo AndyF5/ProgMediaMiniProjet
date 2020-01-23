@@ -4,7 +4,6 @@ import { Table, Row, Col, Form, Button, Badge, Alert } from "react-bootstrap";
 
 import { getSolde, addToSolde } from "../../actions/clientActions";
 import { connect } from "react-redux";
-import { MdAdd } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 
 class SoldeClient extends React.Component {
@@ -75,7 +74,7 @@ class SoldeClient extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  soldes: state.clientReducer.soldes
+  soldes: state.clientSoldeReducer.soldes
 });
 
 export default connect(mapStateToProps, { getSolde, addToSolde })(SoldeClient);
