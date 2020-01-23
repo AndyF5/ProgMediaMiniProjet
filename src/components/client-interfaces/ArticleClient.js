@@ -2,7 +2,7 @@ import React from "react";
 
 import { addToPanier } from "../../actions/clientActions";
 import { connect } from "react-redux";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Card } from "react-bootstrap";
 
 import { FiDelete, FiEdit } from "react-icons/fi"; 
 import { MdAddShoppingC } from "react-icons/md";
@@ -27,6 +27,15 @@ class ArticleClient extends React.Component {
 
   render() {
     return (
+      <Card>
+
+      </Card>
+    );
+  }
+}
+export default connect(null, { addToPanier })(ArticleClient);
+
+{/*
       <tr>
         <td className="w-50 align-middle">
           {this.props.article.title}
@@ -43,7 +52,4 @@ class ArticleClient extends React.Component {
           </Button>
         </td>
       </tr>
-    );
-  }
-}
-export default connect(null, { addToPanier })(ArticleClient);
+      */}
