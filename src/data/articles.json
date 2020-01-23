@@ -3,22 +3,26 @@
     {
       "id": 1,
       "title": "Pomme",
-      "prixUnitaire": 0.5
+      "prixUnitaire": 0.5,
+      "imageURL": "https://images2.minutemediacdn.com/image/upload/c_crop,h_842,w_1500,x_0,y_158/f_auto,q_auto,w_1100/v1554998779/shape/mentalfloss/istock-184927564.jpg"
     },
     {
       "id": 2,
       "title": "Banane",
-      "prixUnitaire": 0.3
+      "prixUnitaire": 0.3,
+      "imageURL": "https://images.agoramedia.com/everydayhealth/gcms/All-About-Bananas-Nutrition-Facts-Health-Benefits-Recipes-and-More-RM-722x406.jpg"
     },
     {
       "id": 3,
       "title": "Fraise",
-      "prixUnitaire": 1.0
+      "prixUnitaire": 1.0,
+      "imageURL": "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AACT1ht.img?h=0&w=720&m=6&q=60&u=t&o=f&l=f"
     },
     {
       "id": 4,
       "title": "Pamplemousse",
-      "prixUnitaire": 1.5
+      "prixUnitaire": 1.5,
+      "imageURL": "https://cdn.shopify.com/s/files/1/1939/2455/articles/ripe-grapefruits_1024x.jpg?v=1558473948"
     }
   ]
 }

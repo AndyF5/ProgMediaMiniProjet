@@ -26,7 +26,7 @@ export default function(state = initialState, action) {
     case ADD_ARTICLE:
       return {
         ...state,
-        articles: [...state.articles, {id: uuid.v4(), title: action.title, prixUnitaire: action.prixUnitaire}]
+        articles: [...state.articles, {id: uuid.v4(), title: action.title, prixUnitaire: action.prixUnitaire, imageURL: action.imageURL}]
       };
 
     case REMOVE_ARTICLE:

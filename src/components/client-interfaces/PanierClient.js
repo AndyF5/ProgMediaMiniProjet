@@ -49,7 +49,7 @@ class PanierClient extends React.Component {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>Title</th>
+                <th className="w-50">Title</th>
                 <th>Quantité</th>
                 <th>Total</th>
                 <th>Actions</th>

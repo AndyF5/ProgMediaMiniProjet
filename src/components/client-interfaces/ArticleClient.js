@@ -27,8 +27,33 @@ class ArticleClient extends React.Component {
 
   render() {
     return (
-      <Card>
-
+      <Card style={{ width: '15rem' }} className="m-2">
+        <Card.Img variant="top" src={this.props.article.imageURL} className="thumbnail" />
+        <Card.Body>
+          <Card.Title>{this.props.article.title}</Card.Title>
+          <Card.Text>
+            <b>Prix Unitaire</b>
+            <br/>
+            ${(this.props.article.prixUnitaire).toFixed(2)}
+          </Card.Text>
+          
+        </Card.Body>
+        <Card.Footer>
+            <table className="w-100">
+              <tbody>
+              <tr>
+                <td className="w-75 px-2">
+                  <Form.Control type="number" min="0" step="1" value={this.state.quantite} onChange={this.handleChange}/>
+                </td>
+                <td className="w-25 px-2">
+                  <Button variant="outline-success" className="" onClick={() => this.state.quantite > 0 ? this.props.addToPanier(this.props.article.id, this.state.quantite): null}>
+                    <FaCartPlus />
+                  </Button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </Card.Footer>
       </Card>
     );
   }

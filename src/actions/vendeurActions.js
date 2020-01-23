@@ -5,10 +5,11 @@ export const getArticles = () => ({
     type: GET_ARTICLES
 });
 
-export const addArticle = (title, prixUnitaire) => ({
+export const addArticle = (title, prixUnitaire, imageURL) => ({
     type: ADD_ARTICLE,
     title,
-    prixUnitaire
+    prixUnitaire,
+    imageURL
 });
 
 export const removeArticle = (id) => ({

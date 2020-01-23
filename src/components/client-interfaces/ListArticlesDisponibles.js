@@ -17,6 +17,7 @@ class ListArticlesDisponible extends React.Component {
   render() {
     return (
       <div>
+        {/*
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -32,6 +33,12 @@ class ListArticlesDisponible extends React.Component {
             ))}
           </tbody>
         </Table>
+            */}
+        <div className="d-flex flex-wrap">
+          {this.props.articles.map(article => (
+            <ArticleClient key={article.id} article={article} />
+          ))}
+        </div>
       </div>
     );
   }
