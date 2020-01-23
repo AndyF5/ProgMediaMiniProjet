@@ -54,7 +54,7 @@ class Facture extends React.Component {
           Facture
         </Card.Header>
         <Card.Body>
-          <Table>
+          <Table responsive>
             <thead>
               <tr>
                 <th className="w-25">

@@ -52,19 +52,16 @@ class SoldeClient extends React.Component {
             <Form>
             <Form.Group>
               <Form.Label>Ajouter à votre solde</Form.Label>
-              <Row>
-                <Col sm="4">
-                  <Form.Control type="number" value={this.state.montantToAdd} onChange={this.handleChange}></Form.Control>
-                </Col>
-                <Col sm="2" className="d-flex justify-content-center align-items-stretch">
-                  <Button variant="outline-success" onClick={this.handleSubmit}>
+              <div className="d-flex">
+                  <Form.Control className="w-25" type="number" value={this.state.montantToAdd} onChange={this.handleChange}></Form.Control>
+
+                  <Button variant="outline-success" onClick={this.handleSubmit} className="ml-2">
                     <h6 className="m-0"><FaPlus /></h6>
                   </Button>
-                </Col>
-                </Row>
+                </div>
             </Form.Group>
             </Form>
-            </Col>
+          </Col>
         </Row>
             
         {this.state.show ? <Alert variant="success" onClose={() => this.setState({show: false})} dismissible>${this.state.added} ajouté à votre solde!</Alert> : null}
