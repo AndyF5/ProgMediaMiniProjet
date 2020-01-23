@@ -67,7 +67,7 @@ class Commandes extends React.Component {
 
 const mapStateToProps = state => ({
   commandes: state.facturesReducer.panierArchive,
-  soldeVendeur: state.vendeurReducer.soldeVendeur
+  soldeVendeur: state.vendeurSoldeReducer.soldeVendeur
 })
 
 export default connect(mapStateToProps, {getArchiveCommandes, getSoldeVendeur})(Commandes);

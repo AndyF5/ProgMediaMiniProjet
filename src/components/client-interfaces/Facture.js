@@ -144,7 +144,7 @@ class Facture extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  articles: state.vendeurReducer.articles,
+  articles: state.articleReducer.articles,
   soldes: state.clientSoldeReducer.soldes
 });
 

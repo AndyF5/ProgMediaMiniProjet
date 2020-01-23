@@ -38,7 +38,7 @@ class ListArticlesDisponible extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  articles: state.vendeurReducer.articles,
+  articles: state.articleReducer.articles,
   panier: state.panierReducer.panier
 });
 

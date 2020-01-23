@@ -32,7 +32,7 @@ class LinePanier extends React.Component {
 
 const mapStateToProps = state => ({
   panier: state.panierReducer.panier,
-  articles: state.vendeurReducer.articles
+  articles: state.articleReducer.articles
 });
 
 export default connect(mapStateToProps, { getArticles, deleteFromPanier })(LinePanier);

@@ -88,7 +88,7 @@ class PanierClient extends React.Component {
 
 const mapStateToProps = state => ({
   panier: state.panierReducer.panier,
-  articles: state.vendeurReducer.articles
+  articles: state.articleReducer.articles
 });
 
 export default connect(mapStateToProps, { getPanier, getArticles, createFacture })(PanierClient);

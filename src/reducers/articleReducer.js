@@ -5,21 +5,16 @@ import {
   GET_ARTICLES,
   ADD_ARTICLE,
   REMOVE_ARTICLE,
-  MODIFY_ARTICLE,
-  GET_SOLDEVENDEUR,
-  ADD_TOSOLDEVENDEUR 
+  MODIFY_ARTICLE
 } from "../actions/types";
 
 //  Lecture des fichiers JSON.
 import articlesJSON from "../data/articles.json";
-import soldeVendeurJSON from "../data/soldeVendeur.json";
 
 let articles = articlesJSON.articles;
-let soldeVendeur = soldeVendeurJSON.soldeVendeur;
 
 const initialState = {
   articles: articles,
-  soldeVendeur: soldeVendeur,
 };
 
 export default function(state = initialState, action) {
@@ -51,14 +46,6 @@ export default function(state = initialState, action) {
           return articles;
         })
       };
-
-    //  Interaction avec le solde du vendeur.
-    case GET_SOLDEVENDEUR:
-      return state;
-
-    case ADD_TOSOLDEVENDEUR:
-      soldeVendeur.montant += action.montant
-      return state;
 
     default:
       return state;
