@@ -45,11 +45,13 @@ class AddArticleVendeur extends React.Component {
           <Form.Control type="text" placeholder="Entrez l'URL de l'image" value={this.state.imageURL} onChange={this.handleURLChange} />
         </Form.Group>
 
-        {this.state.imageURL == "" ? <div></div> : 
-          <Card className="imageCard">
-            <Card.Img src={this.state.imageURL} className="thumbnail" alt="&nbsp;Image introuvable"/>
-          </Card>
-        }
+        <div className="d-inline-block">
+          {this.state.imageURL == "" ? <div></div> : 
+            <Card className="imageCard">
+              <Card.Img src={this.state.imageURL} className="thumbnail" alt="&nbsp;Image introuvable"/>
+            </Card>
+          }
+        </div>
 
         <Button variant="outline-primary" type="submit" className="float-right" onClick={() => this.props.addArticle(this.state.title, parseFloat(this.state.prixUnitaire), this.state.imageURL)}>
           Ajouter

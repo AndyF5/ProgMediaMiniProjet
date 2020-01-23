@@ -43,7 +43,7 @@ export default function(state = initialState, action) {
             article.title = action.title,
             article.prixUnitaire = action.prixUnitaire
           }
-          return articles;
+          return article;
         })
       };
 

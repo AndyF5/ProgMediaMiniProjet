@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Card } from "react-bootstrap";
 
 import { getArticles, modifyArticle } from "../../actions/vendeurActions";
 import { connect } from "react-redux";
@@ -12,8 +12,11 @@ class ModifyArticleVendeur extends React.Component {
         title: this.props.match.params.articleID == null ? "" : this.props.articles.find(article => article.id == this.props.match.params.articleID).title,
         prixUnitaire: this.props.match.params.articleID == null ? "" : this.props.articles.find(article => article.id == this.props.match.params.articleID).prixUnitaire,
         newTitle: "",
-        newPrix: ""
+        newPrix: "",
+        newURL: ""
     };
+
+    console.log(this.props.match.params.articleID == null ? "" : this.props.articles.find(article => article.id == this.props.match.params.articleID).imageURL)
   }
 
   componentDidMount() {
@@ -24,22 +27,35 @@ class ModifyArticleVendeur extends React.Component {
     this.setState({
       id: e.target.value,
       title: this.props.articles.find(article => article.id == e.target.value).title,
-      prixUnitaire: this.props.articles.find(article => article.id == e.target.value).prixUnitaire
+      prixUnitaire: this.props.articles.find(article => article.id == e.target.value).prixUnitaire,
+      imageURL: this.props.articles.find(article => article.id == e.target.value).imageURL
     });
   }
 
   handleTitleChange = (e) => {
-    var newState = this.state;
-
     this.setState({
       newTitle: e.target.value
     });
   }
 
   handlePrixChange = (e) => {
-    this.setState(prevState => ({
+    this.setState({
       newPrix: e.target.value
-    }));
+    });
+  }
+
+  handleURLChange = (e) => {
+    this.setState({
+      newURL: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    this.props.modifyArticle(
+      this.state.id,
+      this.state.newTitle == "" ? this.state.title : this.state.newTitle,
+      this.state.newPrix == "" ? this.state.prixUnitaire : parseFloat(this.state.newPrix)
+    )
   }
 
   render() {
@@ -65,10 +81,28 @@ class ModifyArticleVendeur extends React.Component {
           </Form.Group>
           <Form.Group controlId="formArticlePrix">
             <Form.Label>Prix unitaire</Form.Label>
-            <Form.Control type="number" placeholder={this.state.prixUnitaire}  value={this.state.newPrix} onChange={(e) => this.handlePrixChange(e.target.value)} />
+            <Form.Control type="number" placeholder={this.state.prixUnitaire}  value={this.state.newPrix} onChange={this.handlePrixChange} />
           </Form.Group>
 
-          <Button variant="outline-primary" className="float-right" onClick={() => this.props.modifyArticle(this.state.id, this.state.newTitle, this.state.newPrix)}>
+          <Form.Group controlId="formArticleURL">
+            <Form.Label>Image URL</Form.Label>
+            <Form.Control type="text" placeholder={this.state.imageURL} value={this.state.newURL} onChange={this.handleURLChange} />
+          </Form.Group>
+
+          <div className="d-inline-block">
+            {this.state.newURL == "" ? 
+              this.state.imageURL == null ? <div></div> : 
+                <Card className="imageCard">
+                  <Card.Img src={this.state.imageURL} className="thumbnail" alt="&nbsp;Image introuvable"/>
+                </Card> 
+            : 
+              <Card className="imageCard">
+                <Card.Img src={this.state.newURL} className="thumbnail" alt="&nbsp;Image introuvable"/>
+              </Card>
+            }
+          </div>
+
+          <Button variant="outline-primary" className="float-right" onClick={() => this.props.modifyArticle(this.state.id, this.state.newTitle == "" ? this.state.title : this.state.newTitle, this.state.newPrix == "" ? this.state.prixUnitaire : parseFloat(this.state.newPrix))}>
             Modifier
           </Button>
         </Form>

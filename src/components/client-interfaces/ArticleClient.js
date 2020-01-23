@@ -2,7 +2,7 @@ import React from "react";
 
 import { addToPanier } from "../../actions/clientActions";
 import { connect } from "react-redux";
-import { Button, Form, Card } from "react-bootstrap";
+import { Button, Form, Card, Alert } from "react-bootstrap";
 
 import { FiDelete, FiEdit } from "react-icons/fi"; 
 import { MdAddShoppingC } from "react-icons/md";
@@ -13,7 +13,9 @@ class ArticleClient extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quantite: 0
+      quantite: 0,
+      show: false,
+      added: 0
     }
   }
 
@@ -22,6 +24,16 @@ class ArticleClient extends React.Component {
       this.setState({
         quantite: e.target.value
       });
+    }
+  }
+
+  handleSubmit = (e) => {
+    if (this.state.quantite > 0) {
+      this.props.addToPanier(this.props.article.id, this.state.quantite)
+      this.setState({
+        show: true,
+        added: this.state.quantite,
+        quantite: 0})
     }
   }
 
@@ -35,8 +47,9 @@ class ArticleClient extends React.Component {
             <b>Prix Unitaire</b>
             <br/>
             ${(this.props.article.prixUnitaire).toFixed(2)}
+            
           </Card.Text>
-          
+          {this.state.show ? <Alert variant="success" className="mt-2 mb-0" onClose={() => this.setState({show: false})} dismissible>{this.state.added} {this.props.article.title} ajouté à votre panier!</Alert> : null}
         </Card.Body>
         <Card.Footer>
             <table className="w-100">
@@ -46,7 +59,7 @@ class ArticleClient extends React.Component {
                   <Form.Control type="number" min="0" step="1" value={this.state.quantite} onChange={this.handleChange}/>
                 </td>
                 <td className="w-25 px-2">
-                  <Button variant="outline-success" className="" onClick={() => this.state.quantite > 0 ? this.props.addToPanier(this.props.article.id, this.state.quantite): null}>
+                  <Button variant="outline-success" className="" onClick={this.handleSubmit}>
                     <FaCartPlus />
                   </Button>
                 </td>
