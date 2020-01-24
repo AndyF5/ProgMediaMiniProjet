@@ -8,13 +8,8 @@ import {
   MODIFY_ARTICLE
 } from "../actions/types";
 
-//  Lecture des fichiers JSON.
-import articlesJSON from "../data/articles.json";
-
-let articles = articlesJSON.articles;
-
 const initialState = {
-  articles: articles,
+  articles: [],
 };
 
 export default function(state = initialState, action) {
