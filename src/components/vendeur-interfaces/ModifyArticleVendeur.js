@@ -15,8 +15,6 @@ class ModifyArticleVendeur extends React.Component {
         newPrix: "",
         newURL: ""
     };
-
-    console.log(this.props.match.params.articleID == null ? "" : this.props.articles.find(article => article.id == this.props.match.params.articleID).imageURL)
   }
 
   componentDidMount() {

@@ -2,7 +2,8 @@
 import { 
   GET_PANIER,
   ADD_TOPANIER,
-  DELETE_FROMPANIER
+  DELETE_FROMPANIER,
+  EMPTY_PANIER
 } from "../actions/types";
 
 import uuid from "uuid";
@@ -33,6 +34,10 @@ export default function(state = initialState, action) {
       ...state,
       panier: [...state.panier.filter(item => item.id != action.id) ]
     };
+  case EMPTY_PANIER:
+    return {
+      panier: []
+    }
   default:
     return state;
   }

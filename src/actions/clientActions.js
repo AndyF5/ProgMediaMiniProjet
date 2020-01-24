@@ -6,7 +6,8 @@ import {
     SUBTRACT_FROMSOLDE,
     ARCHIVE_PANIER,
     GET_SOLDE,
-    GET_ARCHIVEPANIER 
+    GET_ARCHIVEPANIER, 
+    EMPTY_PANIER
 } from "./types";
 
 export const getPanier= () => ({
@@ -18,6 +19,10 @@ export const addToPanier = (articleID, quantite) => ({
     articleID,
     quantite
 });
+
+export const emptyPanier = () => ({
+    type: EMPTY_PANIER
+})
 
 export const deleteFromPanier = (id) => ({
     type: DELETE_FROMPANIER,

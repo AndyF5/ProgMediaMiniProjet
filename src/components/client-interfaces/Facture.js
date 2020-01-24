@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Table, Button, Badge } from "react-bootstrap";
 
 import { getArticles, createFacture, addToSoldeVendeur } from "../../actions/vendeurActions";
-import { getSolde, subtractFromSolde, archivePanier } from "../../actions/clientActions";
+import { getSolde, subtractFromSolde, archivePanier, emptyPanier } from "../../actions/clientActions";
 import { connect } from "react-redux";
 import { MdPayment } from "react-icons/md";
 
@@ -38,6 +38,7 @@ class Facture extends React.Component {
       this.props.createFacture(this.props.panier);
       this.props.archivePanier(this.props.panier, this.state.total * 1.15);
       this.props.addToSoldeVendeur(this.state.total * 0.12);
+      this.props.emptyPanier();
       this.setState({
         reset: true
       })
@@ -148,4 +149,4 @@ const mapStateToProps = state => ({
   soldes: state.clientSoldeReducer.soldes
 });
 
-export default connect(mapStateToProps, { getArticles, getSolde, subtractFromSolde, createFacture, archivePanier, addToSoldeVendeur })(Facture);
+export default connect(mapStateToProps, { getArticles, getSolde, subtractFromSolde, createFacture, archivePanier, addToSoldeVendeur, emptyPanier })(Facture);
