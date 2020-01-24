@@ -5,7 +5,7 @@
   "homepage": "https://andyf5.github.io/ProgMediaMiniProjet",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build",
+    "deploy": "gh-pages -d build",
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
