@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Table, Button, Container, Badge } from "react-bootstrap";
+import ListArticleDispo from "./Client/ListArticleDispo";
 
 class Client extends React.Component {
   render() {
@@ -18,18 +19,7 @@ class Client extends React.Component {
                 </tr>
               </thead>
               <tbody>
-                <tr >
-                  <td >Pommes</td>
-                  <td >2$</td>
-                  <td >
-                    <input type="number" className="form-control" />
-                  </td>
-                  <td >
-                    <Button variant="primary" className="float-right">
-                      Ajouter
-                    </Button>
-                  </td>
-                </tr>
+                  <ListArticleDispo />
               </tbody>
             </Table>
 
@@ -65,12 +55,14 @@ class Client extends React.Component {
                 <tr >
                   <th >Titre</th>
                   <th >Prix unitaire</th>
+                  <th >Quantité</th>
                   <th >Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr >
                   <td >Bananes</td>
+                  <td >10$</td>
                   <td >10$</td>
                   <td >
                     <Button variant="danger" className="float-right">
@@ -86,6 +78,7 @@ class Client extends React.Component {
             <Table borderless>
               <tbody>
                 <tr >
+                  <td >Total</td>
                   <td ></td>
                   <td ></td>
                   <td >
@@ -112,7 +105,7 @@ class Client extends React.Component {
                   <td>0$</td>
                 </tr>
                 <tr>
-                  <td>Total avec taxe</td>
+                  <td>Total à payer</td>
                   <td>0$</td>
                 </tr>
               </tbody>

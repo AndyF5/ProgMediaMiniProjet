@@ -2,17 +2,17 @@ import React from "react";
 
 import { FaTrash } from "react-icons/fa";
 import { GiCardExchange } from "react-icons/gi";
+//import InputAdornment from '@material-ui/core/InputAdornment';
 
-import { modifyProduit, removeProduit } from "../actions/produitActions";
-import { Button } from "react-bootstrap";
+import { modifyArticle, removeArticle } from "../../actions/vendeurActions";
+import { Button, Row } from "react-bootstrap";
 import { connect } from "react-redux";
 
-class Produit extends React.Component {
-
+class Article extends React.Component {
   state = {
-    title: this.props.produit.title,
-    prix: this.props.produit.prix
-  }
+    title: this.props.article.title,
+    price: this.props.article.price
+  };
 
   onChangeTitle = e => {
     this.setState({
@@ -20,13 +20,11 @@ class Produit extends React.Component {
     });
   };
 
-  onChangePrix = e => {
+  onChangePrice = e => {
     this.setState({
-      prix: e.target.value
+      price: e.target.value
     });
   };
-
-
 
   render() {
     return (
@@ -40,21 +38,25 @@ class Produit extends React.Component {
           />
         </td>
         <td>
-          <input
-            type="number"
-            className="form-control"
-            value={this.state.prix}
-            onChange={this.onChangePrix}
-          />
+          <Row>
+            <span>$</span>
+            <input
+              type="number"
+              className="form-control col-10"
+              //startAdornment={<InputAdornment position="start">$</InputAdornment>}
+              value={this.state.price}
+              onChange={this.onChangePrice}
+            />
+          </Row>
         </td>
         <td>
           <Button
             variant="success"
             onClick={() =>
-              this.props.modifyProduit(
-                this.props.produit.id,
+              this.props.modifyArticle(
+                this.props.article.id,
                 this.state.title,
-                this.state.prix
+                this.state.price
               )
             }
           >
@@ -65,7 +67,7 @@ class Produit extends React.Component {
           <Button
             variant="danger"
             className="float-right"
-            onClick={() => this.props.removeProduit(this.props.produit.id)}
+            onClick={() => this.props.removeArticle(this.props.article.id)}
           >
             <FaTrash />
           </Button>
@@ -76,9 +78,9 @@ class Produit extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  produits: state.produitReducer.produits
+  articles: state.articleReducer.articles
 });
 
-export default connect(mapStateToProps, { modifyProduit, removeProduit })(
-  Produit
+export default connect(mapStateToProps, { modifyArticle, removeArticle })(
+  Article
 );

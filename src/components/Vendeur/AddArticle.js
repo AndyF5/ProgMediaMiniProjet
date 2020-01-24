@@ -2,14 +2,14 @@ import React from "react";
 
 import { FaPlus } from "react-icons/fa";
 
-import { addProduit } from "../actions/produitActions";
+import { addArticle } from "../../actions/vendeurActions";
 import { connect } from "react-redux";
 import { Button, Table } from "react-bootstrap";
 
-class AddProduit extends React.Component {
+class AddArticle extends React.Component {
   state = {
     title: "",
-    prix: ""
+    price: ""
   };
 
   onChangeTitle = e => {
@@ -18,16 +18,16 @@ class AddProduit extends React.Component {
     });
   };
 
-  onChangePrix = e => {
+  onChangePrice = e => {
     this.setState({
-      prix: e.target.value
+      price: e.target.value
     });
   };
 
   onClick = () => {
-    this.props.addProduit(this.state.title, this.state.prix);
+    this.props.addArticle(this.state.title, this.state.price);
 
-    this.setState({ title: "", prix: "" });
+    this.setState({ title: "", price: "" });
   };
 
   render() {
@@ -49,11 +49,10 @@ class AddProduit extends React.Component {
                 type="number"
                 className="form-control"
                 placeholder="Entrer prix de l'article'"
-                value={this.state.prix}
-                onChange={this.onChangePrix}
+                value={this.state.price}
+                onChange={this.onChangePrice}
               />
             </td>
-
             <td>
               <Button
                 variant="primary"
@@ -71,4 +70,4 @@ class AddProduit extends React.Component {
   }
 }
 
-export default connect(null, { addProduit })(AddProduit);
+export default connect(null, { addArticle })(AddArticle);

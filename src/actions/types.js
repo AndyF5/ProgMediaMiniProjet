@@ -1,4 +1,11 @@
-export const GET_PRODUITS = "GET_PRODUITS";
-export const MODIFY_PRODUIT = "MODIFY_PRODUIT";
-export const REMOVE_PRODUIT = "REMOVE_PRODUIT";
-export const ADD_PRODUIT = "ADD_PRODUIT";
+export const GET_ARTICLES = "GET_ARTICLES";
+export const MODIFY_ARTICLE = "MODIFY_ARTICLE";
+export const REMOVE_ARTICLE = "REMOVE_ARTICLE";
+export const ADD_ARTICLE = "ADD_ARTICLE";
+
+export const MODIFY_SOLDE = "MODIFY_SOLDE";
+export const REMOVE_PANIER = "REMOVE_PANIER";
+export const ADD_PANIER = "ADD_PANIER";
+export const PAID_PANIER = "PAID_PANIER";
+export const GET_ARTICLESDISPO = "GET_ARTICLESDISPO";
+
