@@ -4,7 +4,7 @@ import { addToPanier } from "../../actions/clientActions";
 import { connect } from "react-redux";
 import { Button, Form } from "react-bootstrap";
 
-import { FiDelete, FiEdit } from "react-icons/fi"; 
+import { FiDelete, FiEdit } from "react-icons/fi";
 import { MdAddShoppingC } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { FaCartPlus } from "react-icons/fa";
