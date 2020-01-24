@@ -16,12 +16,15 @@ export default function(state = initialState, action) {
   switch (action.type) {
     //  Interactions avec les articles.
     case GET_ARTICLES:
-      return state;
+      return {
+        ...state,
+        articles: action.payload
+      }
 
     case ADD_ARTICLE:
       return {
         ...state,
-        articles: [...state.articles, {id: uuid.v4(), title: action.title, prixUnitaire: action.prixUnitaire}]
+        articles: [...state.articles, {id: uuid.v4(), title: action.payload.title, price: parseFloat(action.payload.price)}]
       };
 
     case REMOVE_ARTICLE:
@@ -36,7 +39,7 @@ export default function(state = initialState, action) {
         articles: state.articles.map(article => {
           if(article.id == action.id) {
             article.title = action.title,
-            article.prixUnitaire = action.prixUnitaire
+            article.price = action.price
           }
           return articles;
         })

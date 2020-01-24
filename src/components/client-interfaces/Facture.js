@@ -24,7 +24,7 @@ class Facture extends React.Component {
     var newTotal = 0;
 
     this.props.panier.map((item) => 
-      newTotal += item.quantite * this.props.articles.find((element) => {return element.id == item.articleID}).prixUnitaire
+      newTotal += item.quantite * this.props.articles.find((element) => {return element.id == item.articleID}).price
     );
 
     this.setState({
@@ -82,10 +82,10 @@ class Facture extends React.Component {
                     {item.quantite}
                   </td>
                   <td align="right" className="align-middle">
-                    {(this.props.articles.find((element) => {return element.id == item.articleID}).prixUnitaire).toFixed(2)}
+                    {(this.props.articles.find((element) => {return element.id == item.articleID}).price).toFixed(2)}
                   </td>
                   <td align="right" className="align-middle">
-                    {(item.quantite * this.props.articles.find((element) => {return element.id == item.articleID}).prixUnitaire).toFixed(2)}
+                    {(item.quantite * this.props.articles.find((element) => {return element.id == item.articleID}).price).toFixed(2)}
                   </td>
                 </tr>);
               })}

@@ -15,7 +15,7 @@ class Article extends React.Component {
                     {this.props.article.title}
                 </td>
                 <td align="right" className="w-25 align-middle">
-                    ${this.props.article.prixUnitaire.toFixed(2)}
+                    ${this.props.article.price.toFixed(2)}
                 </td>
                 <td className="d-flex justify-content-around">
                     <Button variant="outline-danger" onClick={() => this.props.removeArticle(this.props.article.id)}>

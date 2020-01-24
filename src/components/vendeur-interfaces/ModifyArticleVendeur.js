@@ -10,7 +10,7 @@ class ModifyArticleVendeur extends React.Component {
     this.state = {
         id: this.props.match.params.articleID == null ? "Selectionner un article" : this.props.match.params.articleID,
         title: this.props.match.params.articleID == null ? "" : this.props.articles.find(article => article.id == this.props.match.params.articleID).title,
-        prixUnitaire: this.props.match.params.articleID == null ? "" : this.props.articles.find(article => article.id == this.props.match.params.articleID).prixUnitaire,
+        price: this.props.match.params.articleID == null ? "" : this.props.articles.find(article => article.id == this.props.match.params.articleID).price,
         newTitle: "",
         newPrix: ""
     };
@@ -24,7 +24,7 @@ class ModifyArticleVendeur extends React.Component {
     this.setState({
       id: e.target.value,
       title: this.props.articles.find(article => article.id == e.target.value).title,
-      prixUnitaire: this.props.articles.find(article => article.id == e.target.value).prixUnitaire
+      price: this.props.articles.find(article => article.id == e.target.value).price
     });
   }
 
@@ -65,7 +65,7 @@ class ModifyArticleVendeur extends React.Component {
           </Form.Group>
           <Form.Group controlId="formArticlePrix">
             <Form.Label>Prix unitaire</Form.Label>
-            <Form.Control type="number" placeholder={this.state.prixUnitaire}  value={this.state.newPrix} onChange={(e) => this.handlePrixChange(e.target.value)} />
+            <Form.Control type="number" placeholder={this.state.price}  value={this.state.newPrix} onChange={(e) => this.handlePrixChange(e.target.value)} />
           </Form.Group>
 
           <Button variant="outline-primary" className="float-right" onClick={() => this.props.modifyArticle(this.state.id, this.state.newTitle, this.state.newPrix)}>

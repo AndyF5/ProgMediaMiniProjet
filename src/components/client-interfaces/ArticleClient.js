@@ -32,7 +32,7 @@ class ArticleClient extends React.Component {
           {this.props.article.title}
         </td>
         <td align="right" className="w-25 align-middle">
-          ${(this.props.article.prixUnitaire).toFixed(2)}
+          ${(this.props.article.price).toFixed(2)}
         </td>
         <td className="align-middle">
           <Form.Control type="number" min="0" step="1" value={this.state.quantite} onChange={this.handleChange}/>

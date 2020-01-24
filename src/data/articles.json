@@ -3,22 +3,22 @@
     {
       "id": 1,
       "title": "Pomme",
-      "prixUnitaire": 0.5
+      "price": 0.5
     },
     {
       "id": 2,
       "title": "Banane",
-      "prixUnitaire": 0.3
+      "price": 0.3
     },
     {
       "id": 3,
       "title": "Fraise",
-      "prixUnitaire": 1.0
+      "price": 1.0
     },
     {
       "id": 4,
       "title": "Pamplemousse",
-      "prixUnitaire": 1.5
+      "price": 1.5
     }
   ]
 }

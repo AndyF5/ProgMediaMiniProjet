@@ -18,7 +18,7 @@ class LinePanier extends React.Component {
           {this.props.item.quantite}
         </td>
         <td align="right" className="align-middle">
-          ${(this.props.articles.find((element) => {return element.id == this.props.item.articleID}).prixUnitaire * this.props.item.quantite).toFixed(2)}
+          ${(this.props.articles.find((element) => {return element.id == this.props.item.articleID}).price * this.props.item.quantite).toFixed(2)}
         </td>
         <td align="middle">
           <Button variant="outline-danger" onClick={() => this.props.deleteFromPanier(this.props.item.id)}>
