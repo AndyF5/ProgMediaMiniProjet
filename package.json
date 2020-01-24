@@ -2,7 +2,10 @@
   "name": "mini-projet-1",
   "version": "0.1.0",
   "description": "",
+  "homepage": "https://andyf5.github.io/ProgMediaMiniProjet",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build",
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
