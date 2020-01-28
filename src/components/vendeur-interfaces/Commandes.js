@@ -33,7 +33,7 @@ class Commandes extends React.Component {
   render() {
     return (
       <div>
-        <h3>Vos bénéfices: <Badge variant="success">${this.props.soldeVendeur.montant.toFixed(2)}</Badge></h3>
+        <h3>Vos bénéfices: <Badge variant="success">${this.props.soldeVendeur.toFixed(2)}</Badge></h3>
         <hr />
         <Table>
           <thead>

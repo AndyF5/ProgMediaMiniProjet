@@ -7,41 +7,29 @@ import {
 
 import uuid from "uuid";
 
-//  Lectures des fichiers JSON.
-import soldesJSON from "../data/soldes.json";
-
-let soldes = soldesJSON.soldes;
-
 const initialState = {
-  soldes: soldes
+  balance: 0
 };
   
 export default function(state = initialState, action) {
   switch (action.type) {
     //  Interaction avec le solde du client.
     case GET_SOLDE:
-      return state;
+      return {
+        ...state,
+        balance: parseFloat(action.payload.balance)
+      }
 
     case ADD_TOSOLDE:
       return {
         ...state,
-        soldes: state.soldes.map(solde => {
-          if(solde.id == action.id) {
-            solde.montant += parseFloat(action.montant)
-          }
-          return solde;
-        })
+        balance: parseFloat(action.payload.balance)
       };
 
     case SUBTRACT_FROMSOLDE:
       return {
         ...state,
-        soldes: state.soldes.map(solde => {
-          if(solde.id == action.id) {
-            solde.montant -= parseFloat(action.montant)
-          }
-          return solde;
-        })
+        balance: parseFloat(action.payload.balance)
       };
 
     default:

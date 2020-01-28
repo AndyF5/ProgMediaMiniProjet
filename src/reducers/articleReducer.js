@@ -24,25 +24,19 @@ export default function(state = initialState, action) {
     case ADD_ARTICLE:
       return {
         ...state,
-        articles: [...state.articles, {id: uuid.v4(), title: action.payload.title, price: parseFloat(action.payload.price)}]
+        articles: action.payload
       };
 
     case REMOVE_ARTICLE:
       return {
         ...state,
-        articles: [...state.articles.filter(article => article.id != action.id) ]
+        articles: action.payload
       };
 
     case MODIFY_ARTICLE:
       return {
         ...state,
-        articles: state.articles.map(article => {
-          if(article.id == action.id) {
-            article.title = action.title,
-            article.price = action.price
-          }
-          return articles;
-        })
+        articles: action.payload
       };
 
     default:

@@ -6,24 +6,24 @@ import {
   ADD_TOSOLDEVENDEUR 
 } from "../actions/types";
 
-//  Lecture des fichiers JSON.
-import soldeVendeurJSON from "../data/soldeVendeur.json";
-
-let soldeVendeur = soldeVendeurJSON.soldeVendeur;
-
 const initialState = {
-  soldeVendeur: soldeVendeur,
+  soldeVendeur: 0,
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     //  Interaction avec le solde du vendeur.
     case GET_SOLDEVENDEUR:
-      return state;
+      return {
+        ...state,
+        soldeVendeur: parseFloat(action.payload.gain)
+      }
 
     case ADD_TOSOLDEVENDEUR:
-      soldeVendeur.montant += action.montant
-      return state;
+      return {
+        ...state,
+        soldeVendeur: parseFloat(action.payload.gain)
+      }
 
     default:
       return state;

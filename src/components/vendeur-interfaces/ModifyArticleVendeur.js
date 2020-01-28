@@ -37,9 +37,21 @@ class ModifyArticleVendeur extends React.Component {
   }
 
   handlePrixChange = (e) => {
-    this.setState(prevState => ({
-      newPrix: e.target.value
-    }));
+    this.setState({
+      newPrix: parseFloat(e.target.value)
+    });
+  }
+
+  handleSubmit = (e) => {
+    this.props.modifyArticle(
+      this.state.id,
+      this.state.newTitle == "" ? this.state.title : this.state.newTitle,
+      this.state.newPrix == "" ? this.state.price : this.state.newPrix
+    );
+
+    this.setState({
+      reset: true
+    })
   }
 
   render() {
@@ -65,10 +77,10 @@ class ModifyArticleVendeur extends React.Component {
           </Form.Group>
           <Form.Group controlId="formArticlePrix">
             <Form.Label>Prix unitaire</Form.Label>
-            <Form.Control type="number" placeholder={this.state.price}  value={this.state.newPrix} onChange={(e) => this.handlePrixChange(e.target.value)} />
+            <Form.Control type="number" placeholder={this.state.price}  value={this.state.newPrix} onChange={this.handlePrixChange} />
           </Form.Group>
 
-          <Button variant="outline-primary" className="float-right" onClick={() => this.props.modifyArticle(this.state.id, this.state.newTitle, this.state.newPrix)}>
+          <Button variant="outline-primary" className="float-right" onClick={this.handleSubmit}>
             Modifier
           </Button>
         </Form>

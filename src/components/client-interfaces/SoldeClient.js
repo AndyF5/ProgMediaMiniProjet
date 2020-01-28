@@ -40,7 +40,7 @@ class SoldeClient extends React.Component {
             <dl>
               <dt>Solde:</dt>
               <dd className="">
-              <h3 className="mt-1"><Badge variant="success">${(this.props.soldes.find(solde => solde.id == 1).montant).toFixed(2)}</Badge></h3>
+              <h3 className="mt-1"><Badge variant="success">${this.props.balance.toFixed(2)}</Badge></h3>
               </dd>
             </dl>
           </Col>
@@ -74,7 +74,7 @@ class SoldeClient extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  soldes: state.clientSoldeReducer.soldes
+  balance: state.clientSoldeReducer.balance
 });
 
 export default connect(mapStateToProps, { getSolde, addToSolde })(SoldeClient);

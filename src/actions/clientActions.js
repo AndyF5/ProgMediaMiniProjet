@@ -9,6 +9,8 @@ import {
     GET_ARCHIVEPANIER 
 } from "./types";
 
+import axios from "axios";
+
 export const getPanier= () => ({
     type: GET_PANIER
 });
@@ -24,22 +26,40 @@ export const deleteFromPanier = (id) => ({
     id
 });
 
-export const getSolde = (id) => ({
-    type: GET_SOLDE,
-    id
-});
+export const getSolde = (id) => dispatch => {
+    axios.get("http://yyacine.pythonanywhere.com/shop/clpm34/client").then(res =>
+        dispatch({
+            type: GET_SOLDE,
+            payload: res.data
+        })
+    );
+};
 
-export const addToSolde = (id, montant) => ({
-    type: ADD_TOSOLDE,
-    id,
-    montant
-});
+export const addToSolde = (id, montant) => dispatch => {
+    axios.get("http://yyacine.pythonanywhere.com/shop/clpm34/client").then(res =>
+        axios.put("http://yyacine.pythonanywhere.com/shop/clpm34/client/" + (parseFloat(res.data.balance) + parseFloat(montant)).toFixed(2)).then(res =>
+            axios.get("http://yyacine.pythonanywhere.com/shop/clpm34/client").then(res =>
+                dispatch({
+                    type: ADD_TOSOLDE,
+                    payload: res.data
+                })
+            )
+        )
+    )
+};
 
-export const subtractFromSolde = (id, montant) => ({
-    type: SUBTRACT_FROMSOLDE,
-    id,
-    montant
-});
+export const subtractFromSolde = (id, montant) => dispatch => {
+    axios.get("http://yyacine.pythonanywhere.com/shop/clpm34/client").then(res =>
+        axios.put("http://yyacine.pythonanywhere.com/shop/clpm34/client/" + (parseFloat(res.data.balance) - parseFloat(montant)).toFixed(2)).then(res =>
+            axios.get("http://yyacine.pythonanywhere.com/shop/clpm34/client").then(res =>
+                dispatch({
+                    type: SUBTRACT_FROMSOLDE,
+                    payload: res.data
+                })
+            )
+        )
+    )
+}
 
 export const archivePanier = (panierArch, montant) => ({
     type: ARCHIVE_PANIER,

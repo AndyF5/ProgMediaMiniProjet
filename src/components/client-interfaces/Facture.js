@@ -33,7 +33,7 @@ class Facture extends React.Component {
   }
 
   handlePayment = (e) => {
-    if(this.state.total < this.props.soldes.find(solde => solde.id == 1).montant){
+    if(this.state.total < this.props.balance){
       this.props.subtractFromSolde(1, this.state.total*1.15);
       this.props.createFacture(this.props.panier);
       this.props.archivePanier(this.props.panier, this.state.total * 1.15);
@@ -128,7 +128,7 @@ class Facture extends React.Component {
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="d-flex flex-column">
                       <span >Votre solde:</span>
-                      <h4 className="mt-1"><Badge variant="success">${(this.props.soldes.find(solde => solde.id == 1).montant).toFixed(2)}</Badge></h4>
+                      <h4 className="mt-1"><Badge variant="success">${(this.props.balance).toFixed(2)}</Badge></h4>
                     </div>
                     <Button variant="outline-primary" className="ml-2 py-1 d-flex align-items-center" onClick={this.handlePayment}><span>Payer avec votre solde</span> <h3 className="mb-0 text-nowrap"><MdPayment /></h3></Button>
                   </div>
@@ -145,7 +145,7 @@ class Facture extends React.Component {
 
 const mapStateToProps = state => ({
   articles: state.articleReducer.articles,
-  soldes: state.clientSoldeReducer.soldes
+  balance: state.clientSoldeReducer.balance
 });
 
 export default connect(mapStateToProps, { getArticles, getSolde, subtractFromSolde, createFacture, archivePanier, addToSoldeVendeur })(Facture);

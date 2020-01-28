@@ -7,13 +7,8 @@ import {
 
 import uuid from "uuid";
 
-//  Lectures des fichiers JSON.
-import panierJSON from "../data/panier.json";
-
-let panier = panierJSON.panier;
-
 const initialState = {
-  panier: panier
+  panier: []
 };
 
 export default function(state = initialState, action) {
