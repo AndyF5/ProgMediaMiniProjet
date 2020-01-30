@@ -15,16 +15,16 @@ import Accueil from "./components/Accueil";
 
 //  Composant racine
 class App extends React.Component {
-  render () {
+  render() {
     return (
       <Provider store={store}>
         <Router>
           <Navigation />
-            <div className="d-flex w-100 justify-content-center align-items-center pt-4">
+          <div className="d-flex w-100 justify-content-center align-items-center pt-4">
             <Switch>
-              <Route exact path="/" component={Accueil}/>
-              <Route path="/vendeur" component={Vendeur}/>
-              <Route path="/client" component={Client}/>
+              <Route exact path="/" component={Accueil} />
+              <Route path="/vendeur" component={Vendeur} />
+              <Route path="/client" component={Client} />
             </Switch>
           </div>
         </Router>

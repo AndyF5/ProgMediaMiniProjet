@@ -2,14 +2,13 @@ import React from "react";
 
 import ArticleClient from "./ArticleClient";
 
-import { Table } from "react-bootstrap";
 import { connect } from "react-redux";
 
 import { getArticles } from "../../actions/vendeurActions";
 import { getPanier } from "../../actions/clientActions";
 
 class ListArticlesDisponible extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.getArticles();
     this.props.getPanier();
   }
@@ -17,23 +16,6 @@ class ListArticlesDisponible extends React.Component {
   render() {
     return (
       <div>
-        {/*
-        <Table striped bordered hover>
-          <thead>
-            <tr>
-              <th>Titre</th>
-              <th className="text-nowrap">Prix unitaire</th>
-              <th>Quantité</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.articles.map(article => (
-              <ArticleClient key={article.id} article={article} />
-            ))}
-          </tbody>
-        </Table>
-            */}
         <div className="d-flex flex-wrap">
           {this.props.articles.map(article => (
             <ArticleClient key={article.id} article={article} />
@@ -49,4 +31,6 @@ const mapStateToProps = state => ({
   panier: state.panierReducer.panier
 });
 
-export default connect(mapStateToProps, { getArticles, getPanier })(ListArticlesDisponible);
+export default connect(mapStateToProps, { getArticles, getPanier })(
+  ListArticlesDisponible
+);

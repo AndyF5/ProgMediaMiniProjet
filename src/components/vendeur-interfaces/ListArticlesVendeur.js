@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { getArticles } from "../../actions/vendeurActions";
 
 class ListArticlesVendeur extends React.Component {
-  componentDidMount(){
+  componentDidMount() {
     this.props.getArticles();
   }
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Table, Button } from "react-bootstrap";
 
-import { FaList, FaWindowClose } from "react-icons/fa";
+import { FaList } from "react-icons/fa";
 
 import { getArticles } from "../../actions/vendeurActions";
 import { connect } from "react-redux";
@@ -12,7 +12,7 @@ class Commande extends React.Component {
     super(props);
     this.state = {
       display: false
-    }
+    };
   }
 
   componentDidMount() {
@@ -20,28 +20,43 @@ class Commande extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <tbody>
         <tr>
           <td className="align-middle">
-            {this.props.commande.date.toLocaleDateString()} {this.props.commande.date.toLocaleTimeString()}
+            {this.props.commande.date.toLocaleDateString()}{" "}
+            {this.props.commande.date.toLocaleTimeString()}
           </td>
           <td align="right" className="align-middle">
-            {this.props.commande.panier.reduce((prev, next) => prev + next.quantite, 0)}
+            {this.props.commande.panier.reduce(
+              (prev, next) => prev + next.quantite,
+              0
+            )}
           </td>
           <td align="right" className="align-middle">
             ${this.props.commande.montant.toFixed(2)}
           </td>
           <td align="right">
-            <Button variant="outline-primary" onClick={() => (this.setState({display: !this.state.display}))}><FaList /></Button>
+            <Button
+              variant="outline-primary"
+              onClick={() => this.setState({ display: !this.state.display })}
+            >
+              <FaList />
+            </Button>
           </td>
         </tr>
-        {this.state.display ? 
+        {this.state.display ? (
           <tr>
             <td colSpan="4">
               <div className="m-2">
-                <Button variant="outline-danger" className="float-right p-0 mb-2" onClick={() => this.setState({display: false})}>
-                  <h3 className="mb-0"><MdClose /></h3>
+                <Button
+                  variant="outline-danger"
+                  className="float-right p-0 mb-2"
+                  onClick={() => this.setState({ display: false })}
+                >
+                  <h3 className="mb-0">
+                    <MdClose />
+                  </h3>
                 </Button>
                 <Table bordered striped hover>
                   <thead>
@@ -51,14 +66,16 @@ class Commande extends React.Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.props.commande.panier.map((ligne) => (
+                    {this.props.commande.panier.map(ligne => (
                       <tr key={ligne.id}>
                         <td>
-                          {this.props.articles.find((element) => {return element.id == ligne.articleID}).title}
+                          {
+                            this.props.articles.find(element => {
+                              return element.id == ligne.articleID;
+                            }).title
+                          }
                         </td>
-                        <td>
-                          {ligne.quantite}
-                        </td>
+                        <td>{ligne.quantite}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -66,9 +83,9 @@ class Commande extends React.Component {
               </div>
             </td>
           </tr>
-        : null }
+        ) : null}
       </tbody>
-    )
+    );
   }
 }
 

@@ -7,11 +7,8 @@ import { getPanier, createFacture } from "../../actions/clientActions";
 import { connect } from "react-redux";
 
 import LinePanier from "./LinePanier";
-import { FiShoppingCart } from "react-icons/fi";
 import { MdKeyboardArrowRight, MdShoppingCart } from "react-icons/md";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Facture from "./Facture";
-
 
 class PanierClient extends React.Component {
   constructor(props) {
@@ -19,15 +16,20 @@ class PanierClient extends React.Component {
     this.state = {
       total: 0,
       facture: false
-    }
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.props.getPanier();
     this.props.getArticles();
     var newTotal = 0;
-    this.props.panier.map((item) => 
-      newTotal += item.quantite * this.props.articles.find((element) => {return element.id == item.articleID}).prixUnitaire
+    this.props.panier.map(
+      item =>
+        (newTotal +=
+          item.quantite *
+          this.props.articles.find(element => {
+            return element.id == item.articleID;
+          }).prixUnitaire)
     );
 
     this.setState({
@@ -35,15 +37,15 @@ class PanierClient extends React.Component {
     });
   }
 
-  handleClick = (e) => {
+  handleClick = e => {
     //this.props.createFacture(this.props.panier);
     this.setState({
       facture: true
-    })
-  }
+    });
+  };
 
   render() {
-    return(
+    return (
       <div>
         <div>
           <Table striped bordered hover>
@@ -71,18 +73,24 @@ class PanierClient extends React.Component {
               <tr>
                 <td></td>
                 <td>
-                  <Button variant="outline-success" className="float-right" onClick={this.handleClick}>
-                    Passer la commande <MdShoppingCart /> <MdKeyboardArrowRight />
+                  <Button
+                    variant="outline-success"
+                    className="float-right"
+                    onClick={this.handleClick}
+                  >
+                    Passer la commande <MdShoppingCart />{" "}
+                    <MdKeyboardArrowRight />
                   </Button>
                 </td>
               </tr>
             </tbody>
           </Table>
-          
         </div>
-        {this.state.facture ? <Facture panier={this.props.panier} facture={this.props.facture} /> : null}
+        {this.state.facture ? (
+          <Facture panier={this.props.panier} facture={this.props.facture} />
+        ) : null}
       </div>
-    )
+    );
   }
 }
 
@@ -91,4 +99,8 @@ const mapStateToProps = state => ({
   articles: state.articleReducer.articles
 });
 
-export default connect(mapStateToProps, { getPanier, getArticles, createFacture })(PanierClient);
+export default connect(mapStateToProps, {
+  getPanier,
+  getArticles,
+  createFacture
+})(PanierClient);

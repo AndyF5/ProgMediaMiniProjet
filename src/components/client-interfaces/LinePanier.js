@@ -12,16 +12,28 @@ class LinePanier extends React.Component {
     return (
       <tr>
         <td className="align-middle">
-          {this.props.articles.find((element) => {return element.id == this.props.item.articleID}).title}
+          {
+            this.props.articles.find(element => {
+              return element.id == this.props.item.articleID;
+            }).title
+          }
         </td>
         <td align="right" className="align-middle">
           {this.props.item.quantite}
         </td>
         <td align="right" className="align-middle">
-          ${(this.props.articles.find((element) => {return element.id == this.props.item.articleID}).prixUnitaire * this.props.item.quantite).toFixed(2)}
+          $
+          {(
+            this.props.articles.find(element => {
+              return element.id == this.props.item.articleID;
+            }).prixUnitaire * this.props.item.quantite
+          ).toFixed(2)}
         </td>
         <td align="middle">
-          <Button variant="outline-danger" onClick={() => this.props.deleteFromPanier(this.props.item.id)}>
+          <Button
+            variant="outline-danger"
+            onClick={() => this.props.deleteFromPanier(this.props.item.id)}
+          >
             <FiDelete />
           </Button>
         </td>
@@ -35,4 +47,6 @@ const mapStateToProps = state => ({
   articles: state.articleReducer.articles
 });
 
-export default connect(mapStateToProps, { getArticles, deleteFromPanier })(LinePanier);
+export default connect(mapStateToProps, { getArticles, deleteFromPanier })(
+  LinePanier
+);

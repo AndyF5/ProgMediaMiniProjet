@@ -12,28 +12,31 @@ class Commandes extends React.Component {
     this.state = {
       total: 0,
       items: 0
-    }
+    };
   }
-    
+
   componentDidMount() {
     this.props.getArchiveCommandes();
     this.props.getSoldeVendeur();
-    
+
     var newTotal = 0;
 
-    this.props.commandes.map((commande) => (
-      newTotal += commande.montant
-    ));
+    this.props.commandes.map(commande => (newTotal += commande.montant));
 
     this.setState({
       total: newTotal
     });
   }
-    
+
   render() {
     return (
       <div>
-        <h3>Vos bénéfices: <Badge variant="success">${this.props.soldeVendeur.montant.toFixed(2)}</Badge></h3>
+        <h3>
+          Vos bénéfices:{" "}
+          <Badge variant="success">
+            ${this.props.soldeVendeur.montant.toFixed(2)}
+          </Badge>
+        </h3>
         <hr />
         <Table>
           <thead>
@@ -44,16 +47,14 @@ class Commandes extends React.Component {
               <th>Actions</th>
             </tr>
           </thead>
-          {this.props.commandes.map((commande) => (
-            <Commande key={commande.id} commande={commande}/>
+          {this.props.commandes.map(commande => (
+            <Commande key={commande.id} commande={commande} />
           ))}
           <tfoot>
             <tr>
               <td></td>
               <td></td>
-              <th className="align-middle">
-                Total
-              </th>
+              <th className="align-middle">Total</th>
               <td align="right" className="align-middle">
                 ${this.state.total.toFixed(2)}
               </td>
@@ -68,6 +69,9 @@ class Commandes extends React.Component {
 const mapStateToProps = state => ({
   commandes: state.facturesReducer.panierArchive,
   soldeVendeur: state.vendeurSoldeReducer.soldeVendeur
-})
+});
 
-export default connect(mapStateToProps, {getArchiveCommandes, getSoldeVendeur})(Commandes);
+export default connect(mapStateToProps, {
+  getArchiveCommandes,
+  getSoldeVendeur
+})(Commandes);
