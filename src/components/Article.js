@@ -17,13 +17,15 @@ class Article extends React.Component {
                 <td align="right" className="w-25 align-middle">
                     ${this.props.article.prixUnitaire.toFixed(2)}
                 </td>
-                <td className="d-flex justify-content-around">
-                    <Button variant="outline-danger" onClick={() => this.props.removeArticle(this.props.article.id)}>
-                        <FiDelete />
-                    </Button>
-                    <Link className="btn btn-outline-primary" to={`/vendeur/modifier/${this.props.article.id}`}>
-                        <FiEdit />
-                    </Link>
+                <td>
+                    <div  className="d-flex justify-content-around">
+                        <Button variant="outline-danger" onClick={() => this.props.removeArticle(this.props.article.id)}>
+                            <FiDelete />
+                        </Button>
+                        <Link className="btn btn-outline-primary" to={`/vendeur/modifier/${this.props.article.id}`}>
+                            <FiEdit />
+                        </Link>
+                    </div>
                 </td>
             </tr>
         );

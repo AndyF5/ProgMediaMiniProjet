@@ -4,7 +4,6 @@
   "description": "",
   "homepage": "https://andyf5.github.io/ProgMediaMiniProjet",
   "scripts": {
-    "deploy":  "npm run build && git add . && git commit -a -m 'latest build' && git push origin master",
     "start": "parcel index.html",
     "build": "parcel build index.html"
   },
