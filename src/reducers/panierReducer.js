@@ -24,11 +24,23 @@ export default function(state = initialState, action) {
     return state;
 
   case ADD_TOPANIER:
-    return {
-      ...state,
-      panier: [...state.panier, {id: uuid.v4(), articleID: action.articleID, quantite: parseFloat(action.quantite)}]
+    if(state.panier.filter(e => e.articleID == action.articleID).length == 0){
+      return {
+        ...state,
+        panier: [...state.panier, {id: uuid.v4(), articleID: action.articleID, quantite: parseInt(action.quantite)}]
+      };
+    }
+    else {
+      return {
+        ...state,
+        panier: state.panier.map(e => {
+          if(e.articleID == action.articleID){
+            e.quantite += parseInt(action.quantite)
+          }
+          return e;
+        })
+      };
     };
-
   case DELETE_FROMPANIER:
     return {
       ...state,
